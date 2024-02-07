@@ -2,9 +2,6 @@ package GUI.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -27,18 +24,34 @@ public class MainScreen implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        createRandom();
-    }
 
+        rnumber = createRandom();
+    }
 
     public void guessnumber(ActionEvent actionEvent) throws IOException {
+        try {
+            int guessedNumber = Integer.parseInt(numberfield.getText());
 
+            if (guessedNumber == rnumber) {
+                questlabel.setText("Correct!");
+            } else {
+                questlabel.setText("Incorrect. Try again!");
+            }
+        } catch (NumberFormatException e) {
+            questlabel.setText("Please enter a valid number.");
+        }
     }
 
-    public void createRandom(){
+    public int createRandom(){
         Random random = new Random();
         int randomNumber = random.nextInt(1000);
-        System.out.println("Random number is"+ randomNumber);
+        System.out.println(randomNumber);
+        return randomNumber;
+    }
+
+    public void checkWinner(){
+
+
     }
 
 }

@@ -6,12 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="225.0" prefWidth="372.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.MainScreen">
+<AnchorPane prefHeight="225.0" prefWidth="437.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controllers.MainScreen">
    <children>
-      <TextField fx:id="numberfield" layoutX="157.0" layoutY="100.0" prefHeight="26.0" prefWidth="59.0" />
-      <Button layoutX="160.0" layoutY="176.0" mnemonicParsing="false" onAction="#guessnumber" style="-fx-background-color: white;" text="Guess" />
-      <Label fx:id="questlabel" layoutX="5.0" layoutY="29.0" prefHeight="29.0" prefWidth="363.0" text="Guess the number between 0-1000" textFill="WHITE">
+      <TextField fx:id="numberfield" layoutX="189.0" layoutY="100.0" prefHeight="26.0" prefWidth="59.0" />
+      <Button layoutX="193.0" layoutY="178.0" mnemonicParsing="false" onAction="#guessnumber" style="-fx-background-color: white;" text="Guess" />
+      <Label fx:id="questlabel" layoutX="5.0" layoutY="29.0" prefHeight="29.0" prefWidth="430.0" text="Guess the number between 0-1000" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
