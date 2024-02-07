@@ -10,7 +10,7 @@
    <children>
       <TextField fx:id="numberfield" layoutX="189.0" layoutY="100.0" prefHeight="26.0" prefWidth="59.0" />
       <Button layoutX="193.0" layoutY="178.0" mnemonicParsing="false" onAction="#guessnumber" style="-fx-background-color: white;" text="Guess" />
-      <Label fx:id="questlabel" layoutX="4.0" layoutY="30.0" prefHeight="29.0" prefWidth="430.0" text="Guess the number between 0-1000" textFill="WHITE">
+      <Label fx:id="questlabel" layoutX="4.0" layoutY="30.0" prefHeight="29.0" prefWidth="430.0" text="Guess the number between 0-100" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>

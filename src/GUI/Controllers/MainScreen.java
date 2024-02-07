@@ -30,6 +30,7 @@ public class MainScreen implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        hintslbl.setText("");
         levellabel.setText(String.valueOf(currentLevel));
         rnumber = createRandom();
     }
@@ -42,11 +43,13 @@ public class MainScreen implements Initializable {
                 questlabel.setText("Correct!");
                 numberfield.clear();
                 nextLevel();
-                PauseTransition delay = new PauseTransition(MESSAGE_DELAY);
-                delay.setOnFinished(event -> questlabel.setText("Guess the number between 0-1000"));
-                delay.play();
+                questlabel.setText("Guess the number between 0-100");
+            } else if (guessedNumber < rnumber) {
+                questlabel.setText("Incorrect. Try again!");
+                hintslbl.setText(">"+ guessedNumber+" and "+"<"+(rnumber+10));
             } else {
                 questlabel.setText("Incorrect. Try again!");
+                hintslbl.setText("<"+ guessedNumber +" and "+">"+(rnumber+-10));
             }
         } catch (NumberFormatException e) {
             questlabel.setText("Please enter a valid number.");
@@ -56,7 +59,7 @@ public class MainScreen implements Initializable {
 
     public int createRandom(){
         Random random = new Random();
-        int randomNumber = random.nextInt(1000);
+        int randomNumber = random.nextInt(100);
         System.out.println(randomNumber);
         return randomNumber;
     }
