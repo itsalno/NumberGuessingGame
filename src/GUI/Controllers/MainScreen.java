@@ -1,5 +1,6 @@
 package GUI.Controllers;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,8 +12,12 @@ import java.util.Random;
 import java.io.IOException;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.util.Duration;
 
 public class MainScreen implements Initializable {
+    private static final Duration MESSAGE_DELAY =Duration.seconds(1) ;
+    @FXML
+    private Label hintslbl;
     @FXML
     private TextField numberfield;
     @FXML
@@ -20,11 +25,12 @@ public class MainScreen implements Initializable {
     @FXML
     private Label levellabel;
     private int rnumber;
+    private int currentLevel=1;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        levellabel.setText(String.valueOf(currentLevel));
         rnumber = createRandom();
     }
 
@@ -34,12 +40,18 @@ public class MainScreen implements Initializable {
 
             if (guessedNumber == rnumber) {
                 questlabel.setText("Correct!");
+                numberfield.clear();
+                nextLevel();
+                PauseTransition delay = new PauseTransition(MESSAGE_DELAY);
+                delay.setOnFinished(event -> questlabel.setText("Guess the number between 0-1000"));
+                delay.play();
             } else {
                 questlabel.setText("Incorrect. Try again!");
             }
         } catch (NumberFormatException e) {
             questlabel.setText("Please enter a valid number.");
         }
+
     }
 
     public int createRandom(){
@@ -49,9 +61,12 @@ public class MainScreen implements Initializable {
         return randomNumber;
     }
 
-    public void checkWinner(){
+    public void nextLevel(){
+        int currentLevel = Integer.parseInt(levellabel.getText());
+        int nextLevel = currentLevel + 1;
+        levellabel.setText(String.valueOf(nextLevel));
 
-
+        rnumber = createRandom();
     }
 
 }
